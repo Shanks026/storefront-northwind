@@ -1,10 +1,13 @@
 import { Link } from "react-router"
+import { MonitorIcon, MoonIcon, SunIcon } from "lucide-react"
 import { toast } from "sonner"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { CATEGORIES, categoryHref } from "@/lib/categories"
 import { STORE_NAME } from "@/lib/constants"
+import { useTheme } from "@/providers/theme-provider"
 import { Logo } from "./logo"
 
 const COLUMNS = [
@@ -20,6 +23,12 @@ const COLUMNS = [
     title: "Company",
     links: [`About ${STORE_NAME}`, "Sell on " + STORE_NAME, "Careers", "Press", "Affiliates"].map((label) => ({ label, to: "#" })),
   },
+]
+
+const THEMES = [
+  { value: "light", label: "Light", icon: SunIcon },
+  { value: "system", label: "System", icon: MonitorIcon },
+  { value: "dark", label: "Dark", icon: MoonIcon },
 ]
 
 const PAYMENTS = ["Visa", "Mastercard", "Amex", "PayPal", "Apple Pay", "Google Pay"]
@@ -47,6 +56,29 @@ function Newsletter() {
         </form>
       </div>
     </div>
+  )
+}
+
+function ThemeToggle() {
+  const { theme, setTheme } = useTheme()
+
+  return (
+    <ToggleGroup
+      type="single"
+      variant="outline"
+      size="sm"
+      value={theme}
+      // radix emits "" when the active item is clicked again; keep the current theme
+      onValueChange={(next) => next && setTheme(next)}
+      aria-label="Color theme"
+      className="bg-background"
+    >
+      {THEMES.map(({ value, label, icon: Icon }) => (
+        <ToggleGroupItem key={value} value={value} aria-label={`${label} theme`} title={label}>
+          <Icon />
+        </ToggleGroupItem>
+      ))}
+    </ToggleGroup>
   )
 }
 
@@ -81,13 +113,16 @@ export function SiteFooter() {
           <p>
             © {new Date().getFullYear()} {STORE_NAME}. No real payments are processed.
           </p>
-          <ul className="flex flex-wrap gap-1.5" aria-label="Accepted payment methods">
-            {PAYMENTS.map((p) => (
-              <li key={p} className="rounded-md border bg-background px-2 py-1 text-[11px] font-semibold text-foreground/80">
-                {p}
-              </li>
-            ))}
-          </ul>
+          <div className="flex flex-wrap items-center gap-4">
+            <ul className="flex flex-wrap gap-1.5" aria-label="Accepted payment methods">
+              {PAYMENTS.map((p) => (
+                <li key={p} className="rounded-md border bg-background px-2 py-1 text-[11px] font-semibold text-foreground/80">
+                  {p}
+                </li>
+              ))}
+            </ul>
+            <ThemeToggle />
+          </div>
         </div>
       </div>
     </footer>
