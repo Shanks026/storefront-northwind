@@ -30,7 +30,7 @@ export function AddressCard({ address, onEdit, selectable = false, selected = fa
           {address.label}
         </Badge>
         {address.isDefault && (
-          <Badge variant="outline" className="rounded border-primary/30 px-1.5 py-0 text-[10px] tracking-wide text-primary uppercase">
+          <Badge variant="outline" className="rounded px-1.5 py-0 text-[10px] tracking-wide text-muted-foreground uppercase">
             Default
           </Badge>
         )}

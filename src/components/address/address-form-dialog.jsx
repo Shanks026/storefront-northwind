@@ -72,7 +72,7 @@ export function AddressFormDialog({ open, onOpenChange, address, onSaved }) {
                     onClick={() => set("label")(l)}
                     className={cn(
                       "inline-flex h-8 items-center gap-1.5 rounded-full border px-3 text-[13px] font-medium transition-colors",
-                      values.label === l ? "border-primary bg-primary/10 text-primary" : "hover:border-foreground/30",
+                      values.label === l ? "border-primary bg-accent text-accent-foreground" : "hover:border-foreground/30",
                     )}
                   >
                     <Icon className="size-3.5" /> {l}

@@ -110,7 +110,7 @@ function AskQuestion({ slug, vendor }) {
       <AccordionItem value="ask" className="border-b-0">
         <AccordionTrigger className="items-center gap-3 py-4 hover:no-underline">
           <span className="flex items-center gap-3 text-left">
-            <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary">
+            <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-muted text-foreground">
               <MessageSquareText className="size-4.5" />
             </span>
             <span>

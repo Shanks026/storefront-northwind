@@ -167,7 +167,7 @@ function ProductDetail({ product }) {
                   aria-pressed={color.name === c.name}
                   className={cn(
                     "grid size-9 place-items-center rounded-full border-2 transition-shadow",
-                    color.name === c.name ? "border-primary ring-2 ring-primary/20" : "border-border hover:border-foreground/30",
+                    color.name === c.name ? "border-primary ring-2 ring-foreground/10" : "border-border hover:border-foreground/30",
                   )}
                 >
                   <span className="size-6 rounded-full border border-black/10" style={{ background: c.hex }} />
@@ -194,7 +194,7 @@ function ProductDetail({ product }) {
                     aria-pressed={size === s}
                     className={cn(
                       "h-9 min-w-12 rounded-lg border px-3 text-[13px] font-medium transition-colors",
-                      size === s ? "border-primary bg-primary/10 text-primary" : "hover:border-foreground/30",
+                      size === s ? "border-primary bg-accent text-accent-foreground" : "hover:border-foreground/30",
                       sizeError && !size && "border-destructive",
                     )}
                   >
@@ -217,7 +217,7 @@ function ProductDetail({ product }) {
           </div>
 
           <div className="mt-6 grid grid-cols-[1fr_auto] gap-2.5 sm:grid-cols-[1fr_1fr_auto]">
-            <Button size="lg" variant="outline" className="h-11 border-primary text-primary hover:bg-primary/5 hover:text-primary" disabled={soldOut || addToCartMutation.isPending} onClick={addToCart}>
+            <Button size="lg" variant="outline" className="h-11 border-primary text-primary hover:bg-accent hover:text-primary" disabled={soldOut || addToCartMutation.isPending} onClick={addToCart}>
               {addToCartMutation.isPending ? <Loader2 className="animate-spin" /> : <ShoppingCart />} Add to cart
             </Button>
             <Button size="lg" className="order-3 col-span-2 h-11 sm:order-none sm:col-span-1" disabled={soldOut} onClick={buyNow}>

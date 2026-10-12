@@ -31,8 +31,6 @@ const THEMES = [
   { value: "dark", label: "Dark", icon: MoonIcon },
 ]
 
-const PAYMENTS = ["Visa", "Mastercard", "Amex", "PayPal", "Apple Pay", "Google Pay"]
-
 function Newsletter() {
   function subscribe(e) {
     e.preventDefault()
@@ -113,16 +111,7 @@ export function SiteFooter() {
           <p>
             © {new Date().getFullYear()} {STORE_NAME}. No real payments are processed.
           </p>
-          <div className="flex flex-wrap items-center gap-4">
-            <ul className="flex flex-wrap gap-1.5" aria-label="Accepted payment methods">
-              {PAYMENTS.map((p) => (
-                <li key={p} className="rounded-md border bg-background px-2 py-1 text-[11px] font-semibold text-foreground/80">
-                  {p}
-                </li>
-              ))}
-            </ul>
-            <ThemeToggle />
-          </div>
+          <ThemeToggle />
         </div>
       </div>
     </footer>
