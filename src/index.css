@@ -1,0 +1,172 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Very subtle elevation everywhere: overrides Tailwind's shadow scale (used by shadcn too). */
+@theme {
+  --shadow-2xs: 0 1px 0 0 rgb(0 0 0 / 0.02);
+  --shadow-xs: 0 1px 1px 0 rgb(0 0 0 / 0.03);
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.04);
+  --shadow-md: 0 2px 6px -1px rgb(0 0 0 / 0.05), 0 1px 2px -1px rgb(0 0 0 / 0.03);
+  --shadow-lg: 0 6px 16px -4px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.03);
+  --shadow-xl: 0 10px 24px -6px rgb(0 0 0 / 0.07), 0 4px 8px -4px rgb(0 0 0 / 0.03);
+  --shadow-2xl: 0 16px 32px -8px rgb(0 0 0 / 0.08);
+}
+
+@theme inline {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-success: var(--success);
+  --color-subtle: var(--subtle);
+  --color-deal: var(--deal);
+  --color-rating: var(--rating);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* Marketplace palette: calm warm neutrals + hairline borders (SaaS polish),
+   orange brand for primary actions, red for deals, amber for ratings */
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.21 0.01 50);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.21 0.01 50);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.21 0.01 50);
+  --primary: oklch(0.68 0.19 45);
+  --primary-foreground: oklch(0.995 0 0);
+  --secondary: oklch(0.966 0.005 60);
+  --secondary-foreground: oklch(0.25 0.015 50);
+  --muted: oklch(0.966 0.004 60);
+  --muted-foreground: oklch(0.52 0.012 50);
+  --accent: oklch(0.965 0.018 60);
+  --accent-foreground: oklch(0.3 0.06 45);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.915 0.005 60);
+  --input: oklch(0.89 0.006 60);
+  --ring: oklch(0.7 0.16 45);
+  --brand: oklch(0.68 0.19 45);
+  --brand-foreground: oklch(0.995 0 0);
+  --success: oklch(0.6 0.14 155);
+  --deal: oklch(0.57 0.22 25);
+  --rating: oklch(0.78 0.16 75);
+  --subtle: oklch(0.99 0.002 60);
+  --sidebar: oklch(0.985 0.003 60);
+  --sidebar-foreground: oklch(0.21 0.01 50);
+  --sidebar-primary: oklch(0.68 0.19 45);
+  --sidebar-primary-foreground: oklch(0.995 0 0);
+  --sidebar-accent: oklch(0.965 0.018 60);
+  --sidebar-accent-foreground: oklch(0.3 0.06 45);
+  --sidebar-border: oklch(0.915 0.005 60);
+  --sidebar-ring: oklch(0.7 0.16 45);
+}
+
+.dark {
+  --background: oklch(0.165 0.005 50);
+  --foreground: oklch(0.96 0.004 60);
+  --card: oklch(0.2 0.006 50);
+  --card-foreground: oklch(0.96 0.004 60);
+  --popover: oklch(0.215 0.006 50);
+  --popover-foreground: oklch(0.96 0.004 60);
+  --primary: oklch(0.7 0.18 45);
+  --primary-foreground: oklch(0.17 0.02 45);
+  --secondary: oklch(0.25 0.008 50);
+  --secondary-foreground: oklch(0.96 0.004 60);
+  --muted: oklch(0.24 0.006 50);
+  --muted-foreground: oklch(0.68 0.012 60);
+  --accent: oklch(0.27 0.025 45);
+  --accent-foreground: oklch(0.96 0.004 60);
+  --destructive: oklch(0.68 0.19 22);
+  --border: oklch(1 0 0 / 9%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.7 0.16 45);
+  --brand: oklch(0.7 0.18 45);
+  --brand-foreground: oklch(0.17 0.02 45);
+  --success: oklch(0.72 0.14 155);
+  --deal: oklch(0.68 0.2 25);
+  --rating: oklch(0.8 0.15 80);
+  --subtle: oklch(0.19 0.006 50);
+  --sidebar: oklch(0.19 0.006 50);
+  --sidebar-foreground: oklch(0.96 0.004 60);
+  --sidebar-primary: oklch(0.7 0.18 45);
+  --sidebar-primary-foreground: oklch(0.17 0.02 45);
+  --sidebar-accent: oklch(0.27 0.025 45);
+  --sidebar-accent-foreground: oklch(0.96 0.004 60);
+  --sidebar-border: oklch(1 0 0 / 9%);
+  --sidebar-ring: oklch(0.7 0.16 45);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    /* thin, light scrollbars app-wide (page and inner scroll areas) */
+    scrollbar-width: thin;
+    scrollbar-color: oklch(0.87 0.004 60) transparent;
+  }
+  .dark * {
+    scrollbar-color: oklch(0.34 0.006 50) transparent;
+  }
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    @apply bg-background text-foreground text-sm;
+    font-feature-settings: "cv11", "ss01";
+  }
+}
+
+/* sonner ships its own heavier toast shadow */
+[data-sonner-toast][data-styled="true"] {
+  box-shadow: var(--shadow-md) !important;
+}
+
+@layer utilities {
+  /* faint dotted grid used behind hero / empty states */
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .bg-grid {
+    background-image: radial-gradient(var(--border) 1px, transparent 1px);
+    background-size: 18px 18px;
+  }
+}
+
+/* set by useScrollHoverPause: no hover effects kick in on cards sliding under the cursor mid-scroll */
+html[data-scrolling] main {
+  pointer-events: none;
+}
